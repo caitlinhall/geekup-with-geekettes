@@ -202,25 +202,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#page-top" id="nav-logo"><i class="fa fa-github"></i> Twin Cities Geekettes</a>
+                <li class="dropdown" id="logo-dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="nav-logo"><i class="fa fa-github"></i> Twin Cities Geekettes</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
             </div>
 
 
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                   
-                    
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right" id="nav-right-list">
+                    <li><a href=""><i class="fa fa-github"></i> GitHub</a></li>
+                    <li><a href="https://instagram.com/oauth/authorize/?client_id=283747d2bcf5489c8af8b752b0f92cc5&redirect_uri=http://northdacoder.github.io/geekup-with-geekettes/&response_type=token"><i class="fa fa-instagram"></i> Login</a></li>
+                    <li><a href="https://instagram.com/accounts/logout/"><i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
-                <ul style="list-style-type: none;">
-                    <li class="pull-right">
-                        <a class="btn btn-info" href="' + data.website + '"><i class="fa fa-github"></i> GitHub</a>
-                        <a href="https://instagram.com/oauth/authorize/?client_id=283747d2bcf5489c8af8b752b0f92cc5&redirect_uri=http://northdacoder.github.io/geekup-with-geekettes/&response_type=token" class="btn btn-info"><i class="fa fa-instagram"></i> Login</a>
-                        <a href="https://instagram.com/accounts/logout/" class="btn btn-info"><i class="fa fa-sign-out"></i> Logout</a>
-                    </li>
-                </ul>
-            </div>
+            </div><!--/.nav-collapse -->
 
-            </div>
         </div>
     </nav>
 

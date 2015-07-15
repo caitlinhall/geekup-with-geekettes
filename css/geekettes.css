@@ -1,151 +1,163 @@
 body {
-            background: #eee;
-        }
-       #insta-login, #insta-logout {    
-            margin-right: 10px;
-            border-radius: 0;
-            position: relative;
-            top: 10px;
-       }
+background: #eee;
+}
+ 
+ #insta-login, #insta-logout {    
+      margin-right: 10px;
+      border-radius: 0;
+      position: relative;
+      top: 10px;
+ }
 
-       #nav-logo {
-            font-family: 'Pacifico', sans-serif;
-            color: #E74C3C;
-            color: rgba(59,8,103,.8);
-       }
+ #logo-dropdown {
+      list-style-type: none;
 
-       #instafeed {
-            box-shadow: 0 0 10px #333;
-       }
+ }
 
-       .username {
-            position: absolute; 
-            width: 100%; 
-            text-align: center; 
-            font-size: 30px; 
-            background: rgba(44,62,80,0);
-            font-family: 'Nixie One', cursive;
-            font-family: 'Poiret One', cursive;
-            font-weight: 200;
-            z-index: 100000;
-            color: rgba(255,255,255,.0);
-       }
-     
-       .post {
-            padding: 0; /*
-            border: 1px solid rgba(44,62,80,1);
-            border: 1px solid rgba(255,255,255,.5);
-            border: 1px solid #eee;*/
-       }
+ #nav-logo {
+      font-family: 'Pacifico', sans-serif;
+      color: #E74C3C;
+      color: rgba(59,8,103,.8);
+ }
 
-       @keyframes spin {
-            100% {transform: rotate(1turn); }
-        }
+ #nav-right-list li a {
+      color: rgba(59,8,103,.8);
+ }
 
-       .overlay {
-            transition: all .5 ease;
-            height: 100%;
-            position: absolute;
-            width: 100%;
-            background: rgba(231,76,60,.6);
-            background: rgba(52,152,219,.8);
-            background: rgba(253,90,138,.8);
-            background: rgba(59,8,103,.8);
-       }
+ #instafeed {
+      box-shadow: 0 0 10px #333;
+ }
+
+ .username {
+      position: absolute; 
+      width: 100%; 
+      text-align: center; 
+      font-size: 30px; 
+      background: rgba(44,62,80,0);
+      font-family: 'Nixie One', cursive;
+      font-family: 'Poiret One', cursive;
+      font-weight: 200;
+      z-index: 100000;
+      color: rgba(255,255,255,.0);
+ }
+
+ .post {
+      padding: 0; /*
+      border: 1px solid rgba(44,62,80,1);
+      border: 1px solid rgba(255,255,255,.5);
+      border: 1px solid #eee;*/
+ }
+
+ @keyframes spin {
+      100% {transform: rotate(1turn); }
+  }
+
+ .overlay {
+      transition: all .5 ease;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      background: rgba(231,76,60,.6);
+      background: rgba(52,152,219,.8);
+      background: rgba(253,90,138,.8);
+      background: rgba(59,8,103,.8);
+ }
 
 
-       .overlay:hover {
-            background: rgba(52,152,219,.1);
-             -moz-box-shadow:    inset 0 0 10px #000000;
-   -webkit-box-shadow: inset 0 0 10px #000000;
-   box-shadow:         inset 0 0 10px #000000;
-       }
+ .overlay:hover {
+      background: rgba(52,152,219,.1);
+       -moz-box-shadow:    inset 0 0 10px #000000;
+-webkit-box-shadow: inset 0 0 10px #000000;
+box-shadow:         inset 0 0 10px #000000;
+ }
 
-       #aboutMe {
-            padding-top: 60px;
-            background: #eee;
-            padding-bottom: 60px;
-            background: url('img/github-universe.jpg');
-            background: url('img/triangles.png');
-            background-size: 100% 100%;
-       }
+ #aboutMe {
+      padding-top: 60px;
+      background: #eee;
+      padding-bottom: 60px;
+      background: url('../img/github-universe.jpg');
+      background: url('../img/triangles.png');
+      background-size: 100% 100%;
+      height: 500px;
+      width: 100%;
+ }
 
-       #aboutMe h1 {
-            font-family: 'Pacifico', sans-serif;
-            color: rgba(255,255,255,.7);
-            font-weight: 100;
-       }
+ #aboutMe h1 {
+      font-family: 'Pacifico', sans-serif;
+      color: rgba(255,255,255,.7);
+      font-weight: 100;
+ }
 
-       #aboutMe .col-sm-6 {
-            padding: 30px 10px;
-       }
+ #aboutMe .col-sm-6 {
+      padding: 30px 10px;
+ }
 
-       #aboutMe h3 {
-            font-family: 'Nixie One', cursive;
-            font-weight: 600;
-            color: rgba(255,255,255,.7);
-       }
+ #aboutMe h3 {
+      font-family: 'Nixie One', cursive;
+      font-weight: 600;
+      color: rgba(255,255,255,.7);
+ }
 
-       #aboutMe img {
-            border-radius: 50%;
-            border: 5px solid rgba(255,255,255,.7);
-            animation: spin 10s linear infinite;
-            /*Set our animation play state to paused initially */
-            animation-play-state: paused; 
-       }
+ #aboutMe img {
+      border-radius: 50%;
+      border: 5px solid rgba(255,255,255,.7);
+      animation: spin 10s linear infinite;
+      /*Set our animation play state to paused initially */
+      animation-play-state: paused; 
+ }
 
-       #aboutMe img:hover {
-            animation-play-state: running;
-       }
+ #aboutMe img:hover {
+      animation-play-state: running;
+ }
 
-       h3#fullname {
-            font-weight: 600;
-            color: rgba(0,0,0,.8);
-            font-size: 50px;
-            color: white;
-            color: rgba(255,255,255,.7);
-            font-family: 'Nixie One', cursive;
+ h3#fullname {
+      font-weight: 600;
+      color: rgba(0,0,0,.8);
+      font-size: 50px;
+      color: white;
+      color: rgba(255,255,255,.7);
+      font-family: 'Nixie One', cursive;
 
-       }
+ }
 
-       h3#username {
-            font-weight: 200;
-            color: rgba(0,0,0,.5);
-            font-size: 30px;
-            color: white;
-            color: rgba(255,255,255,.7);
-            font-family: 'Nixie One', cursive;
-       }
+ h3#username {
+      font-weight: 200;
+      color: rgba(0,0,0,.5);
+      font-size: 30px;
+      color: white;
+      color: rgba(255,255,255,.7);
+      font-family: 'Nixie One', cursive;
+ }
 
-       #aboutMe p {
-            color: rgba(255,255,255,.7);
-            font-family: 'Nixie One', cursive;
-       }
+ #aboutMe p {
+      color: rgba(255,255,255,.7);
+      font-family: 'Nixie One', cursive;
+ }
 
-       #aboutMe a {
-            color: rgba(255,255,255,.7);                
-            font-family: 'Nixie One', cursive;
-            text-align: center;
-            font-size: 24px;
-       }
+ #aboutMe a {
+      color: rgba(255,255,255,.7);                
+      font-family: 'Nixie One', cursive;
+      text-align: center;
+      font-size: 24px;
+ }
 
-       #github {
-            padding: 50px;
-            background: url('img/github-bg.png');
-            background-size: cover;
-            background: black;
-       }
+ #github {
+      padding: 50px;
+      background: url('../img/github-bg.png');
+      background-size: cover;
+      background: black;
+ }
 
-        #github-profile h1 {
-            font-family: 'Nixie One', cursive;
-            background: black;
-            color: lime;
-            color: white;
-       }
+  #github-profile h1 {
+      font-family: 'Nixie One', cursive;
+      background: black;
+      color: lime;
+      color: white;
+ }
 
-       #github-avatar {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto;
-            margin-bottom: 20px;
-       }
+ #github-avatar {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+ }
