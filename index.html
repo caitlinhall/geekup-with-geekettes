@@ -97,6 +97,7 @@
             aboutMe.append('<div class="col-sm-6 col-sm-offset-3" id="welcome-default"><h1 class="text-center">Welcome to geeking out with the Geeketttes! Please <a href="https://instagram.com/oauth/authorize/?client_id=283747d2bcf5489c8af8b752b0f92cc5&redirect_uri=http://northdacoder.github.io/geekup-with-geekettes/&response_type=token" class="btn btn-primary btn-sm" id="insta-login"><i class="fa fa-instagram"></i> login</a> with Instagram to get started</h1></div>')
 
             function createProfile (data) {
+                aboutMe.html("");
                 var data = data.data;
                 console.log(data);
                 var aboutmeHtml = 
@@ -112,6 +113,7 @@
             }
 
             function githubHtml (data) {
+
                 var data = data.data;
                 console.log(data);
                 var githubHtml = 
