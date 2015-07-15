@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Geekettes @ tCommons</title>
+
+    <!-- Custom Font Icons -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Nixie+One|Glegoo|Bubblegum+Sans|Crafty+Girls|Cabin|Sue+Ellen+Francisco|Codystar|Fredericka+the+Great|Poiret+One|Cabin+Sketch|Cherry+Cream+Soda|Short+Stack|Irish+Grover|Quicksand|Josefin+Sans|Lobster|Life+Savers|Rokkitt|Finger+Paint|Source+Code+Pro|Graduate|Monoton|Open+Sans|Raleway|Indie+Flower|Pacifico|Orbitron|Passion+One|Special+Elite|Rancho|Black+Ops+One|Allerta+Stencil|Love+Ya+Like+A+Sister|Press+Start+2P|VT323|Anonymous+Pro|Sancreek|Raleway+Dots|Share+Tech+Mono|Gorditas' rel='stylesheet' type='text/css'>
+
+    <!-- Font Awesome Icon Library -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+   
+    <!-- Bootstrap 3 css styles  -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Scrolling Nav Styles --> 
+    <link href="css/scrolling-nav.css" rel="stylesheet" type="text/css">
+    <link href="https://bootswatch.com/paper/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/geekettes.css">
+
+    <!-- Wow.js JavaScript -->
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+    <!-- JQuery JavaScript --> 
+    <script src="js/jquery-1.10.2.js"></script>
+    
+    <!-- Bootstrap JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/scrolling-nav.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            /* Array to store Instagram posts after user is authenticated */
+            var posts = [];
+
+            /* Array to store GitHub profile from GitHub API */
+            var github = [];
+
+            /* Empty html container that will display user photos */
+            var imageHolder = $("#instafeed");
+
+            /* Empty html contianer to hold about me section */
+            var aboutMe = $("#aboutMe");
+
+            /* Empty html container to hold GitHub profile info from GitHub api */
+            var github = $("#github");
+
+            /* User */
+            var userid = "4489780";
+
+            // console.log($(window));
+            
+            /* Variable that will grab the auth token from the url once the user has authenticated themselves through Instagram */
+            var myToken = window.location.hash.split("=");
+            myToken = myToken[1];
+
+           
+            function createHtml (data) {
+                console.log(data);
+                var data = data.data; 
+                var myposts = []
+                for (var i = 0; i < 8; i++) {
+                    var image = data[i].images.standard_resolution.url;
+                    var imagegridHtml = 
+                                '<div class="col-sm-3 post wow bounceInLeft">' + 
+                                  '<div class="overlay"></div>' +
+                                  '<p class="lead username">' + data[i].user.username + '</p>' +  
+                                  '<img src="' + image + '" class="img-responsive post-image" style="width: 100%; height: auto;"/>' +
+                                '</div>';
+                    imageHolder.append(imagegridHtml);
+                    imageHolder.append(data[i]);  
+                }
+
+               
+
+            }
+
+            function createProfile (data) {
+                var data = data.data;
+                console.log(data);
+                var aboutmeHtml = 
+                        '<h1 class="text-center">About Me</h1><br>' +
+                        '<div class="col-sm-6 col-sm-offset-3">' +
+                            '<center><img class="img-responsive img-rounded" src="' + data.profile_picture + '"></center>' +
+                            '<h3 class="text-center" id="fullname">' + data.full_name + '</h3>' +
+                            '<h3 class="text-center" id="username"><i class="fa fa-instagram"></i> ' + data.username + '</h3>' +
+                            '<p class="lead text-center">' + data.bio + '</p>' +
+                        '</div>';
+
+                aboutMe.append(aboutmeHtml);
+            }
+
+            function githubHtml (data) {
+                var data = data.data;
+                console.log(data);
+                var githubHtml = 
+                        '<div class="col-sm-6 col-sm-offset-3" id="github-profile">' +
+                            '<img src="' + data.avatar_url + '" class="img-responsive img-circle" id="github-avatar">' +
+                            '<h1 class="text-center"><i class="fa fa-github"></i> ' + data.login + '</h1>' +
+                        '</div>';
+
+                $("#github").append(githubHtml);
+            }
+
+              
+
+            function getData () {
+
+                $.ajax({
+                    type: 'GET',
+                    url: "https://api.instagram.com/v1/users/self/feed?access_token=" + myToken,
+                    // url: "https://api.instagram.com/v1/tags/" + q + "/media/recent?access_token=" + myToken,
+                    dataType: 'jsonp',
+                    success: function(json) {
+                      createHtml(json);
+                    },
+                    error:  function(error) {
+                      console.log(error);
+                    }
+                });
+
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://api.instagram.com/v1/users/' + userid + '/?access_token=' + myToken,
+                    // url: "https://api.instagram.com/v1/users/self/feed?access_token=" + myToken,
+                    // url: "https://api.instagram.com/v1/tags/" + q + "/media/recent?access_token=" + myToken,
+                    dataType: 'jsonp',
+                    success: function(json) {                    
+                      createProfile(json);
+                    },
+                    error:  function(error) {
+                      console.log(error);
+                    }
+                });
+
+
+                 $.ajax({
+                    type: 'GET',
+                    url: 'https://api.github.com/users/northdacoder',
+                    dataType: 'jsonp',
+                    success: function(json) {    
+                        github = json.data;
+                        console.log("Github");
+                        console.log(github);                
+                        githubHtml(json);
+                    },
+                    error:  function(error) {
+                      console.log(error);
+                    }
+                });
+
+            }  
+
+
+
+              
+            getData();
+
+            var instagramLogin = $("#insta-login");
+            var instagramLogout = $("#insta-logout");
+
+            if (myToken != undefined) {
+                instagramLogin.hide();
+                instagramLogout.show();
+            } else {
+                instagramLogout.hide();
+                instagramLogin.show();
+            }
+
+        });
+    </script>
+
+</head>
+
+<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top" id="nav-logo"><i class="fa fa-github"></i> Twin Cities Geekettes</a>
+            </div>
+
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                   
+                    
+                </ul>
+                <ul style="list-style-type: none;">
+                    <li class="pull-right">
+                        <a class="btn btn-info" href="' + data.website + '"><i class="fa fa-github"></i> GitHub</a>
+                        <a href="https://instagram.com/oauth/authorize/?client_id=283747d2bcf5489c8af8b752b0f92cc5&redirect_uri=http://localhost:4000&response_type=token" class="btn btn-info"><i class="fa fa-instagram"></i> Login</a>
+                        <a href="https://instagram.com/accounts/logout/" class="btn btn-info"><i class="fa fa-sign-out"></i> Logout</a>
+                    </li>
+                </ul>
+            </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 95px;">
+            <!--<div class="col-sm-2 col-sm-offset-10">
+                <a href="https://instagram.com/oauth/authorize/?client_id=283747d2bcf5489c8af8b752b0f92cc5&redirect_uri=http://localhost:4000&response_type=token"class="btn btn-info btn-sm btn-block" id="insta-login" >Login <i class="fa fa-instagram"></i></a>
+                <a href="https://instagram.com/accounts/logout/" class="btn btn-info btn-sm btn-block" id="insta-logout"> Logout <i class="fa fa-sign-out"></i></a>
+            </div>-->
+        </div>
+            
+        <!-- Empty row to hold our about me section -->
+        <div class="row wow bouncInUp" id="aboutMe"></div>
+        
+        <!-- Empty row to hold our GitHub profile -->
+        <div class="row" id="github"></div>
+    
+        <!-- Empty row that will hold our instagram photos -->
+        <div class="row" style="margin-top: 0px;" id="instafeed"></div>
+    </div>
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
