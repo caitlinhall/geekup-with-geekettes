@@ -94,7 +94,7 @@
 
             }
 
-            aboutMe.append('<div class="col-sm-6 col-sm-offset-3" id="welcome-default"><h1 class="text-center">Welcome to geeking out with the Geeketttes! Please <a href="https://instagram.com/oauth/authorize/?client_id=283747d2bcf5489c8af8b752b0f92cc5&redirect_uri=http://northdacoder.github.io/geekup-with-geekettes/&response_type=token" class="btn btn-primary btn-sm" id="insta-login"><i class="fa fa-instagram"></i> login</a> with Instagram to get started</h1></div>')
+            aboutMe.append('<div class="col-sm-6 col-sm-offset-3" id="welcome-default"><h1 class="text-center">Welcome to geeking out with the Geeketttes! Please <a href="https://instagram.com/oauth/authorize/?client_id=283747d2bcf5489c8af8b752b0f92cc5&redirect_uri=http://northdacoder.github.io/geekup-with-geekettes/&response_type=token" class="btn btn-primary btn-sm" id="insta-login"><i class="fa fa-instagram"></i> login</a> with Instagram to get started</h1></div>');
 
             function createProfile (data) {
                 aboutMe.html("");
@@ -113,13 +113,13 @@
             }
 
             function githubHtml (data) {
-
+                console.log("githubHtml function called");
                 var data = data.data;
                 console.log(data);
                 var githubHtml = 
                         '<div class="col-sm-6 col-sm-offset-3" id="github-profile">' +
-                            '<img src="' + data.avatar_url + '" class="img-responsive img-circle" id="github-avatar">' +
-                            '<h1 class="text-center"><i class="fa fa-github"></i> ' + data.login + '</h1>' +
+                            '<a href="https://github.com/' + data.login + '"><img src="' + data.avatar_url + '" class="img-responsive img-circle" id="github-avatar">' +
+                            '<h1 class="text-center"><i class="fa fa-github"></i> ' + data.login + '</h1></a>' +
                         '</div>';
 
                 $("#github").append(githubHtml);
@@ -211,13 +211,9 @@
                 <li class="dropdown" id="logo-dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="nav-logo"><i class="fa fa-github"></i> Twin Cities Geekettes</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Volunteer</a></li>
+                        <li><a href="#">Join us!</a></li>
                     </ul>
                 </li>
             </div>
@@ -225,7 +221,6 @@
 
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right" id="nav-right-list">
-                    <li><a href=""><i class="fa fa-github"></i> GitHub</a></li>
                     <li id="insta-logout"><a href="https://instagram.com/accounts/logout/"><i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
