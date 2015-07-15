@@ -21,7 +21,9 @@
 
     <!-- Scrolling Nav Styles --> 
     <link href="css/scrolling-nav.css" rel="stylesheet" type="text/css">
-    <link href="https://bootswatch.com/paper/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Uncomment to load optional "Paper" theme for Bootstrap" -->
+    <!--<link href="https://bootswatch.com/paper/bootstrap.min.css" rel="stylesheet" type="text/css">-->
 
     <!-- Animate CSS -->
     <link rel="stylesheet" href="css/animate.css">
@@ -91,6 +93,8 @@
                
 
             }
+
+            aboutMe.append('<div class="col-sm-6 col-sm-offset-3" id="welcome-default"><h1 class="text-center">Welcome to geeking out with the Geeketttes! Please <a href="https://instagram.com/oauth/authorize/?client_id=283747d2bcf5489c8af8b752b0f92cc5&redirect_uri=http://northdacoder.github.io/geekup-with-geekettes/&response_type=token" class="btn btn-primary btn-sm"><i class="fa fa-instagram"></i> login</a> with Instagram to get started</h1></div>')
 
             function createProfile (data) {
                 var data = data.data;
@@ -220,8 +224,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right" id="nav-right-list">
                     <li><a href=""><i class="fa fa-github"></i> GitHub</a></li>
-                    <li><a href="https://instagram.com/oauth/authorize/?client_id=283747d2bcf5489c8af8b752b0f92cc5&redirect_uri=http://northdacoder.github.io/geekup-with-geekettes/&response_type=token"><i class="fa fa-instagram"></i> Login</a></li>
-                    <li><a href="https://instagram.com/accounts/logout/"><i class="fa fa-sign-out"></i> Logout</a></li>
+                    <li id="insta-logout"><a href="https://instagram.com/accounts/logout/"><i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
 

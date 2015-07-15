@@ -20,11 +20,14 @@ background: #eee;
       color: rgba(59,8,103,.8);
       padding-top: 20.5px;
       padding-bottom: 20.5px;
+      font-size: 24px;
  }
 
  #nav-right-list li a {
       color: rgba(59,8,103,.8);
  }
+
+
 
  #instafeed {
       box-shadow: 0 0 10px #333;
@@ -80,6 +83,7 @@ box-shadow:         inset 0 0 10px #000000;
       background: url('../img/github-universe.jpg');
       background: url('../img/triangles.png');
       background-size: 100% 100%;
+      min-height: 500px;
  }
 
  #aboutMe h1 {
@@ -87,6 +91,12 @@ box-shadow:         inset 0 0 10px #000000;
       color: rgba(255,255,255,.7);
       font-weight: 100;
  }
+
+#welcome-default > h1 {
+      font-family: "Nixie One", sans-serif;
+      font-weight: 600;
+      color: white;
+}
 
  #aboutMe .col-sm-6 {
       padding: 30px 10px;
