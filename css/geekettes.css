@@ -18,6 +18,8 @@ background: #eee;
       font-family: 'Pacifico', sans-serif;
       color: #E74C3C;
       color: rgba(59,8,103,.8);
+      padding-top: 20.5px;
+      padding-bottom: 20.5px;
  }
 
  #nav-right-list li a {
