@@ -75,7 +75,8 @@
             myToken = myToken[1];
 
            
-            function createHtml (data) {
+            // This function will fire after a successful Ajax call to the Instagram api & will pass 8 posts through the html template to create the photo grid
+            function createPhotoGrid (data) {
                 console.log(data);
                 var data = data.data; 
                 var myposts = []
@@ -90,9 +91,6 @@
                     imageHolder.append(imagegridHtml);
                     imageHolder.append(data[i]);  
                 }
-
-               
-
             }
 
             aboutMe.append('<div class="col-sm-6 col-sm-offset-3" id="welcome-default"><h1 class="text-center">Welcome to geeking out with the Geeketttes! Please <a href="https://instagram.com/oauth/authorize/?client_id=4948ecf94926486096fa105c5b78f9ff&redirect_uri=http://northdacoder.github.io/geekup-with-geekettes&response_type=token" class="btn btn-primary btn-sm" id="insta-login"><i class="fa fa-instagram"></i> login</a> with Instagram to get started</h1></div>');
@@ -156,7 +154,7 @@
                     // url: "https://api.instagram.com/v1/tags/" + q + "/media/recent?access_token=" + myToken,
                     dataType: 'jsonp',
                     success: function(json) {
-                      createHtml(json);
+                      createPhotoGrid(json);
                     },
                     error:  function(error) {
                       console.log(error);
@@ -170,7 +168,7 @@
                     // url: "https://api.instagram.com/v1/users/self/feed?access_token=" + myToken,
                     // url: "https://api.instagram.com/v1/tags/" + q + "/media/recent?access_token=" + myToken,
                     dataType: 'jsonp',
-                    success: function(json) {                    
+                    success: function(json) {           
                       createProfile(json);
                     },
                     error:  function(error) {
