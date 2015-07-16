@@ -177,17 +177,17 @@
 
                 
 
-                $.ajax({
-                    type: 'GET',
-                    url: 'https://api.github.com/users/northdacoder/repos',
-                    dataType: 'jsonp',
-                    success: function(json) {    
-                        repos = json.data;
-                    },
-                    error:  function(error) {
-                      console.log(error);
-                    }
-                });
+                // $.ajax({
+                //     type: 'GET',
+                //     url: 'https://api.github.com/users/northdacoder/repos',
+                //     dataType: 'jsonp',
+                //     success: function(json) {    
+                //         repos = json.data;
+                //     },
+                //     error:  function(error) {
+                //       console.log(error);
+                //     }
+                // });
 
 
                 $.ajax({
@@ -244,8 +244,6 @@
                         <li><a href="#">Events</a></li>
                         <li><a href="#">Volunteer</a></li>
                         <li><a href="#">Join us!</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
                     </ul>
                 </li>
             </div>
@@ -253,7 +251,6 @@
 
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right" id="nav-right-list">
-                    <li><a href=""><i class="fa fa-github"></i> GitHub</a></li>
                     <li id="insta-logout"><a href="https://instagram.com/accounts/logout/"><i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
