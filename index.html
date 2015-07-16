@@ -55,6 +55,9 @@
             /* Array to store GitHub profile from GitHub API */
             var github = [];
 
+            /* Array to store repo information */
+            var repos = [];
+
             /* Empty html container that will display user photos */
             var imageHolder = $("#instafeed");
 
@@ -63,11 +66,6 @@
 
             /* Empty html container to hold GitHub profile info from GitHub api */
             var github = $("#github");
-
-            /* User */
-            var userid = "4489780";
-
-            // console.log($(window));
             
             /* Variable that will grab the auth token from the url once the user has authenticated themselves through Instagram */
             var myToken = window.location.hash.split("=");
@@ -94,10 +92,9 @@
 
             }
 
-            aboutMe.append('<div class="col-sm-6 col-sm-offset-3" id="welcome-default"><h1 class="text-center">Welcome to geeking out with the Geeketttes! Please <a href="https://instagram.com/oauth/authorize/?client_id=283747d2bcf5489c8af8b752b0f92cc5&redirect_uri=http://northdacoder.github.io/geekup-with-geekettes/&response_type=token" class="btn btn-primary btn-sm" id="insta-login"><i class="fa fa-instagram"></i> login</a> with Instagram to get started</h1></div>');
+            aboutMe.append('<div class="col-sm-6 col-sm-offset-3" id="welcome-default"><h1 class="text-center">Welcome to geeking out with the Geeketttes! Please <a href="https://instagram.com/oauth/authorize/?client_id=4948ecf94926486096fa105c5b78f9ff&redirect_uri=http://northdacoder.github.io/geekout-with-geekettes&response_type=token" class="btn btn-primary btn-sm" id="insta-login"><i class="fa fa-instagram"></i> login</a> with Instagram to get started</h1></div>');
 
             function createProfile (data) {
-                aboutMe.html("");
                 var data = data.data;
                 console.log(data);
                 var aboutmeHtml = 
@@ -113,16 +110,36 @@
             }
 
             function githubHtml (data) {
-                console.log("githubHtml function called");
                 var data = data.data;
                 console.log(data);
+                var date = data.created_at;
+                date = date.split("-");
+                date = date[0];
                 var githubHtml = 
                         '<div class="col-sm-6 col-sm-offset-3" id="github-profile">' +
-                            '<a href="https://github.com/' + data.login + '"><img src="' + data.avatar_url + '" class="img-responsive img-circle" id="github-avatar">' +
-                            '<h1 class="text-center"><i class="fa fa-github"></i> ' + data.login + '</h1></a>' +
-                        '</div>';
+                            '<img src="' + data.avatar_url + '" class="img-responsive img-circle" id="github-avatar">' +
+                            '<h1 class="text-center"><i class="fa fa-github"></i> ' + data.login + '</h1><br>' +
+                            '<h2 class="text-left">Current gig: <br><span class="answer">' + data.company + '</span></h2>' +
+                            '<h2 class="text-left">Hireable:<br> <span class="answer">' + data.hireable + '</span></h2>' +
+                            '<h2 class="text-left">Location:<br> <span class="answer"><i class="fa fa-map-marker"></i> ' + data.location + '</span></h2>' +
+                            '<a href="' + data.html_url + '"><h2 class="text-left"><i class="fa fa-github"></i> GitHub</h2></a>' +
+                            '<a href="' + data.repos_url + '"><h2 class="text-left">Repos: <span class="answer">' + data.public_repos + '</span></h2></a>' +
+                            '<a href="' + data.followers + '"><h2 class="text-left">Followers: <span class="answer">' + data.followers + '</span></h2></a>' +
+                            '<a href="' + data.following + '"><h2 class="text-left">Following: <span class="answer">' + data.following + '</span></h2></a>' +
+                            '<h2 class="text-left" id="joined-github">Passionately contributing code since ' + date + '</h2>' +
+                         '</div>';
+
+                         var reposHtml;
+
+                         for (var i = 0; i < repos.length; i++) {
+                            reposHtml = 
+                                        '<ul>'+
+                                            '<li>' + repos[i] + '</li>' +
+                                        '</ul>';
+                         }
 
                 $("#github").append(githubHtml);
+                $("#github").append(reposHtml);
             }
 
               
@@ -158,14 +175,27 @@
                 });
 
 
-                 $.ajax({
+                
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://api.github.com/users/northdacoder/repos',
+                    dataType: 'jsonp',
+                    success: function(json) {    
+                        repos = json.data;
+                    },
+                    error:  function(error) {
+                      console.log(error);
+                    }
+                });
+
+
+                $.ajax({
                     type: 'GET',
                     url: 'https://api.github.com/users/northdacoder',
                     dataType: 'jsonp',
                     success: function(json) {    
                         github = json.data;
-                        console.log("Github");
-                        console.log(github);                
                         githubHtml(json);
                     },
                     error:  function(error) {
@@ -214,6 +244,8 @@
                         <li><a href="#">Events</a></li>
                         <li><a href="#">Volunteer</a></li>
                         <li><a href="#">Join us!</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
                     </ul>
                 </li>
             </div>
@@ -221,6 +253,7 @@
 
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right" id="nav-right-list">
+                    <li><a href=""><i class="fa fa-github"></i> GitHub</a></li>
                     <li id="insta-logout"><a href="https://instagram.com/accounts/logout/"><i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
             </div><!--/.nav-collapse -->

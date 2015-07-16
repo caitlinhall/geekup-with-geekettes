@@ -16,11 +16,8 @@ background: #eee;
 
  #nav-logo {
       font-family: 'Pacifico', sans-serif;
-      color: #E74C3C;
       color: rgba(59,8,103,.8);
-      padding-top: 20.5px;
-      padding-bottom: 20.5px;
-      font-size: 24px;
+      font-size: 30px;
  }
 
  #nav-right-list li a {
@@ -155,15 +152,33 @@ box-shadow:         inset 0 0 10px #000000;
       padding: 50px;
       background: url('../img/github-bg.png');
       background-size: cover;
-      background: black;
+      background-image: linear-gradient(to bottom, #6a328d 0%, #161961 100%);
  }
 
-  #github-profile h1 {
+#github-profile h1, #github-profile h2, #github-profile h3, #github-profile p {
       font-family: 'Nixie One', cursive;
-      background: black;
       color: lime;
       color: white;
  }
+
+#github-profile .answer {
+      color: lime;
+}
+
+#github-profile a {
+      font-family: 'Nixie One', cursive;
+      color: lime;
+}
+
+h2#joined-github {
+      margin-top: 30px;
+      font-family: 'Love ya like a sister', cursive;
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      font-size: 40px;
+      color: rgba(255,255,255,.3);
+}
+
 
  #github-avatar {
       width: 150px;
