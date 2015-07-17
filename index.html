@@ -144,17 +144,17 @@
 
             function getData () {
                 // This Ajax call helps you authenticate your website with the Instagram API. 
-                $.ajax({
-                    type: 'GET',
-                    url: 'https://api.instagram.com/v1/users/' + userid + '/?access_token=' + myToken,
-                    dataType: 'jsonp',
-                    success: function(json) {           
-                      createProfile(json);
-                    },
-                    error:  function(error) {
-                      console.log(error);
-                    }
-                });
+                // $.ajax({
+                //     type: 'GET',
+                //     url: 'https://api.instagram.com/v1/users/' + userid + '/?access_token=' + myToken,
+                //     dataType: 'jsonp',
+                //     success: function(json) {           
+                //       createProfile(json);
+                //     },
+                //     error:  function(error) {
+                //       console.log(error);
+                //     }
+                // });
             }  
               
             getData();
