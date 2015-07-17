@@ -96,7 +96,7 @@
                 }
             }
 
-            aboutMe.append('<div class="col-sm-6 col-sm-offset-3" id="welcome-default"><h1 class="text-center">Welcome to geeking out with the Geeketttes! Please <a href="https://instagram.com/oauth/authorize/?client_id=457e26f64cb9474bb0961d151796d6d5&redirect_uri=http://caitlinhall.github.io/geekup-with-geekettes&response_type=token" class="btn btn-primary btn-sm" id="insta-login"><i class="fa fa-instagram"></i> login</a> with Instagram to get started</h1></div>');
+            aboutMe.append('<div class="col-sm-6 col-sm-offset-3" id="welcome-default"><h1 class="text-center">Welcome to geeking out with the Geeketttes! Please <a href="https://instagram.com/oauth/authorize/?client_id=' + client_id + '&redirect_uri=http://caitlinhall.github.io/geekup-with-geekettes/&response_type=token" class="btn btn-primary btn-sm" id="insta-login"><i class="fa fa-instagram"></i> login</a> with Instagram to get started</h1></div>');
 
             function createProfile (data) {
                 var data = data.data;
@@ -141,7 +141,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: "https://api.instagram.com/v1/users/self/feed?access_token=" + myToken,
+                    url: "https://api.instagram.com/v1/users/" + userid + "/media/recent/?access_token=" + myToken,
                     dataType: 'jsonp',
                     success: function(json) {
                       createPhotoGrid(json);
