@@ -76,6 +76,11 @@
 
             //This is the Client ID from the Instagram API
             var client_id = "457e26f64cb9474bb0961d151796d6d5";
+            // var client_id = "Add Your Client ID here"; need this
+
+            //This is your Github Username
+            var github_name = "caitlinhall";
+            // var github_name = "Add Your Git Hub Username here"; need this
 
            
             // This function will fire after a successful Ajax call to the Instagram api & will pass 8 posts through the html template to create the photo grid
@@ -96,7 +101,7 @@
                 }
             }
 
-            aboutMe.append('<div class="col-sm-6 col-sm-offset-3" id="welcome-default"><h1 class="text-center">Welcome to geeking out with the Geeketttes! Please <a href="https://instagram.com/oauth/authorize/?client_id=' + client_id + '&redirect_uri=http://caitlinhall.github.io/geekup-with-geekettes/&response_type=token" class="btn btn-primary btn-sm" id="insta-login"><i class="fa fa-instagram"></i> login</a> with Instagram to get started</h1></div>');
+            aboutMe.append('<div class="col-sm-6 col-sm-offset-3" id="welcome-default"><h1 class="text-center">Welcome to geeking out with the Geeketttes! Please <a href="https://instagram.com/oauth/authorize/?client_id=' + client_id + '&redirect_uri=http://' + github_name +'.github.io/geekup-with-geekettes/&response_type=token" class="btn btn-primary btn-sm" id="insta-login"><i class="fa fa-instagram"></i> login</a> with Instagram to get started</h1></div>');
 
             function createProfile (data) {
                 var data = data.data;
@@ -166,7 +171,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: 'https://api.github.com/users/northdacoder',
+                    url: 'https://api.github.com/users/' + github_name,
                     dataType: 'jsonp',
                     success: function(json) {    
                         github = json.data;
@@ -218,7 +223,6 @@
                     </ul>
                 </li>
             </div>
-
 
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right" id="nav-right-list">
