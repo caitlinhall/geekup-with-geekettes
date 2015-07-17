@@ -74,13 +74,13 @@
             var myToken = window.location.hash.split("=");
             myToken = myToken[1];
 
-            //This is the Client ID from the Instagram API
+            //This is the Client ID from the Instagram API below is an example.
             var client_id = "457e26f64cb9474bb0961d151796d6d5";
-            // var client_id = "Add Your Client ID here"; need this
+            // var client_id = "Add Your Client ID here";
 
-            //This is your Github Username
+            //This is your Github Username below is an example
             var github_name = "caitlinhall";
-            // var github_name = "Add Your Git Hub Username here"; need this
+            // var github_name = "Add Your Git Hub Username here";
 
            
             // This function will fire after a successful Ajax call to the Instagram api & will pass 8 posts through the html template to create the photo grid
@@ -143,7 +143,20 @@
             }
 
             function getData () {
-
+                // This Ajax call helps you authenticate your website with the Instagram API. 
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://api.instagram.com/v1/users/' + userid + '/?access_token=' + myToken,
+                    dataType: 'jsonp',
+                    success: function(json) {           
+                      createProfile(json);
+                    },
+                    error:  function(error) {
+                      console.log(error);
+                    }
+                });
+                
+                // This Ajax call gets your most recent pictures.
                 $.ajax({
                     type: 'GET',
                     url: "https://api.instagram.com/v1/users/" + userid + "/media/recent/?access_token=" + myToken,
@@ -156,19 +169,7 @@
                     }
                 });
 
-
-                $.ajax({
-                    type: 'GET',
-                    url: 'https://api.instagram.com/v1/users/' + userid + '/?access_token=' + myToken,
-                    dataType: 'jsonp',
-                    success: function(json) {           
-                      createProfile(json);
-                    },
-                    error:  function(error) {
-                      console.log(error);
-                    }
-                });
-
+                // This Ajax call gets data back from your GitHub account.
                 $.ajax({
                     type: 'GET',
                     url: 'https://api.github.com/users/' + github_name,
