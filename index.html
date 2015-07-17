@@ -143,45 +143,6 @@
             }
 
             function getData () {
-                // This Ajax call helps you authenticate your website with the Instagram API. 
-                $.ajax({
-                    type: 'GET',
-                    url: 'https://api.instagram.com/v1/users/' + userid + '/?access_token=' + myToken,
-                    dataType: 'jsonp',
-                    success: function(json) {           
-                      createProfile(json);
-                    },
-                    error:  function(error) {
-                      console.log(error);
-                    }
-                });
-                
-                // This Ajax call gets your most recent pictures.
-                $.ajax({
-                    type: 'GET',
-                    url: "https://api.instagram.com/v1/users/" + userid + "/media/recent/?access_token=" + myToken,
-                    dataType: 'jsonp',
-                    success: function(json) {
-                      createPhotoGrid(json);
-                    },
-                    error:  function(error) {
-                      console.log(error);
-                    }
-                });
-
-                // This Ajax call gets data back from your GitHub account.
-                $.ajax({
-                    type: 'GET',
-                    url: 'https://api.github.com/users/' + github_name,
-                    dataType: 'jsonp',
-                    success: function(json) {    
-                        github = json.data;
-                        githubHtml(json);
-                    },
-                    error:  function(error) {
-                      console.log(error);
-                    }
-                });
 
             }  
               
