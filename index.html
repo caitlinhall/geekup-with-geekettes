@@ -67,8 +67,9 @@
             /* Empty html container to hold GitHub profile info from GitHub api */
             var github = $("#github");
 
-            // Instagram userid for our DevLadies account - this string will be used in our Ajax call to our instagram profile
+            // This is your Instagram user id. Below is an example.
             var userid = "1626659574";
+            // var userid = "Add Your User ID here";
             
             /* Variable that will grab the auth token from the url once the user has authenticated themselves through Instagram */
             var myToken = window.location.hash.split("=");
@@ -81,6 +82,8 @@
             //This is your Github Username below is an example
             var github_name = "caitlinhall";
             // var github_name = "Add Your Git Hub Username here";
+
+            var github_accesstoken = "c2045fbd72b206bac8e9243dfcbe74914653c3f1";
 
            
             // This function will fire after a successful Ajax call to the Instagram api & will pass 8 posts through the html template to create the photo grid
@@ -144,17 +147,44 @@
 
             function getData () {
                 // This Ajax call helps you authenticate your website with the Instagram API. 
-                // $.ajax({
-                //     type: 'GET',
-                //     url: 'https://api.instagram.com/v1/users/' + userid + '/?access_token=' + myToken,
-                //     dataType: 'jsonp',
-                //     success: function(json) {           
-                //       createProfile(json);
-                //     },
-                //     error:  function(error) {
-                //       console.log(error);
-                //     }
-                // });
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://api.instagram.com/v1/users/' + userid + '/?access_token=' + myToken,
+                    dataType: 'jsonp',
+                    success: function(json) {           
+                      createProfile(json);
+                    },
+                    error:  function(error) {
+                      console.log(error);
+                    }
+                });
+
+                // This Ajax call gets your most recent pictures.
+                $.ajax({
+                    type: 'GET',
+                    url: "https://api.instagram.com/v1/users/" + userid + "/media/recent/?access_token=" + myToken,
+                    dataType: 'jsonp',
+                    success: function(json) {
+                      createPhotoGrid(json);
+                    },
+                    error:  function(error) {
+                      console.log(error);
+                    }
+                });
+
+                // This Ajax call gets data back from your GitHub account.
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://api.github.com/users/' + github_name + '?access_token=' + github_accesstoken,
+                    dataType: 'jsonp',
+                    success: function(json) {    
+                        github = json.data;
+                        githubHtml(json);
+                    },
+                    error:  function(error) {
+                      console.log(error);
+                    }
+                });
             }  
               
             getData();
