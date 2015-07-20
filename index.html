@@ -68,20 +68,20 @@
             var github = $("#github");
 
             // This is your Instagram user id. Below is an example.
-            var userid = "2068638377";
-            // var userid = "Add Your User ID here";
+            // var userid = "2068638377";
+            var userid = "Add Your User ID here";
             
             /* Variable that will grab the auth token from the url once the user has authenticated themselves through Instagram */
             var myToken = window.location.hash.split("=");
             myToken = myToken[1];
 
             //This is the Client ID from the Instagram API below is an example.
-            var client_id = "4948ecf94926486096fa105c5b78f9ff";
-            // var client_id = "Add Your Client ID here";
+            // var client_id = "4948ecf94926486096fa105c5b78f9ff";
+            var client_id = "Add Your Client ID here";
 
             //This is your Github Username below is an example
-            var github_name = "northdacoder";
-            // var github_name = "Add Your Git Hub Username here";
+            // var github_name = "northdacoder";
+            var github_name = "Add Your Git Hub Username here";
            
             // This function will fire after a successful Ajax call to the Instagram api & will pass 8 posts through the html template to create the photo grid
             function createPhotoGrid (data) {
