@@ -131,3 +131,63 @@ Now you should be able to see your profile data if you refresh the page.
 
 So what does this do?
 This Ajax call gets the json data back from the Instagram API and calls the function createPhotoGrid(json) and passes the json data with it as well. This then creates the html for a photo grid of your most recent photos. Now let's push up your code to see what the profile data looks like.
+
+##Terminal Steps
+Let's deploy/push your changes out to GitHub.
+
+    ```
+    git add .
+    git commit -m "a description of your change"
+    git push origin gh-pages
+    ```
+
+Now you should be able to see your Instagram images if you refresh the page. 
+
+##Sublime Steps
+
+
+- [ ] After the ajax you just added, add this snippet of code. This ajax call gets your github profile information. [Click here for snippet](https://gist.github.com/caitlinhall/bebee0b5cef0e76e88a1).
+
+    ```
+    function getData () {
+      // This Ajax call helps you authenticate your website with the Instagram API. 
+      $.ajax({
+          type: 'GET',
+          url: 'https://api.instagram.com/v1/users/' + userid + '/?access_token=' + myToken,
+          dataType: 'jsonp',
+          success: function(json) {           
+            createProfile(json);
+          },
+          error:  function(error) {
+            console.log(error);
+          }
+      });
+      
+      // This Ajax call gets your most recent pictures.
+      $.ajax({
+           type: 'GET',
+           url: "https://api.instagram.com/v1/users/" + userid + "/media/recent/?access_token=" + myToken,
+           dataType: 'jsonp',
+           success: function(json) {
+             createPhotoGrid(json);
+           },
+           error:  function(error) {
+             console.log(error);
+           }
+      });
+   } 
+    ```
+
+So what does this do?
+This Ajax call gets the json data back from the GitHub API and calls the function githubHtml(json) and passes the json data with it as well. This then creates the html for the GitHub prfile information. Now lets push up your code to see what your website looks like. 
+
+##Terminal Steps
+Let's deploy/push your changes out to GitHub.
+
+    ```
+    git add .
+    git commit -m "a description of your change"
+    git push origin gh-pages
+    ```
+
+Now you should be able to see your GitHub profile data if you refresh the page. 
