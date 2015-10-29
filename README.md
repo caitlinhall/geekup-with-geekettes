@@ -1,5 +1,7 @@
 # Geekup with Geekettes
 
+[Click here to see demo](https://github.com/caitlinhall/geekup-with-geekettes-demo)
+
 ##Prerequisites
 
 - [ ] Install [Sublime Text 2](http://www.sublimetext.com/2) or whichever text-editor you prefer (any decent text editor will do)
