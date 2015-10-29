@@ -1,6 +1,6 @@
 # Geekup with Geekettes
 
-[Click here to see demo](https://github.com/caitlinhall/geekup-with-geekettes-demo)
+[Click here to see demo](http://caitlinhall.github.io/geekup-with-geekettes-demo/)
 
 ##Prerequisites
 
